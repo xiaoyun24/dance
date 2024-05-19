@@ -45,12 +45,17 @@
                     table += '<tr>';
                     cells.forEach(cell => {
                         if(index === 0){
-                            table += i`<th>${cell}</th>`;
+                            table += `<th>${cell}</th>`;
                         }else{
                             table += `<td>${cell}</td>`;
-                        }
-                        
+                        }  
                     });
+                    if(index === 0){
+                        table += `<th>视频</th>`;
+                    }else{
+                        table += `<td>8/8_${row}</td>`;
+                    }  
+
                     table += '</tr>';
                 });
                 table += '</table>';
