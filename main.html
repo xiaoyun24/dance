@@ -64,15 +64,11 @@
                 
                     
                 for (let l = 0; l < loop; l++){
-                    table += '<tr>'
-                    for(let i = 0; i < 4; i++){
-                        table += `<td>${number_row.at(l*4 + i)}</td>`;
-                    }
-                    table += '</tr>'  
+                  
 
                     table += '<tr>'
                     for(let i = 0; i < 4; i++){
-                    table += `<td>${description_row.at(l*4 +i)}</td>`;
+                    table += `<td>${number_row.at(l*4 + i)}. ${description_row.at(l*4 +i)}</td>`;
                     }
                     table += '</tr>'
 
