@@ -53,7 +53,16 @@
                     if(index === 0){
                         table += `<th>视频</th>`;
                     }else{
-                        table += `<td>8/8_${index}</td>`;
+                        table += `<td>
+
+                            <video width="320" height="240" controls>
+                            <source src="8/8_${index}.mp4" type="video/mp4">
+                            
+                            8/8_${index}.mp4
+                            </video>
+                            
+            
+                            </td>`;
                     }  
 
                     table += '</tr>';
