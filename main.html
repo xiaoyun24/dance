@@ -60,7 +60,7 @@
                     
                 index = 0
 
-                loop = number_row.length/4 + 1
+                loop = number_row.length/4 
                 
                     
                 for (let l = 0; l < loop; l++){
@@ -78,7 +78,7 @@
 
                     table += '<tr>'
                     for(let i = 0; i < 4; i++){
-                        table += `<td><video width="320" height="240" controls><source src="8/8_${l*4 +i}.mp4" type="video/mp4">8/8_${index}.mp4</video></td>`;
+                        table += `<td><video width="320" height="240" controls><source src="8/8_${l*4 +i + 1}.mp4" type="video/mp4">8/8_${l*4 +i + 1}.mp4</video></td>`;
                     }
                     table += '/<tr>'
 
