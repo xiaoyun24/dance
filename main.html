@@ -42,6 +42,9 @@
                 let table = '<table>';
                 rows.forEach((row, index) => {
                     const cells = row.split(',');
+
+                    console.log(cells)
+                    
                     table += '<tr>';
                     cells.forEach(cell => {
                         if(index === 0){
