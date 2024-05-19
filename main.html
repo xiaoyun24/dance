@@ -40,10 +40,11 @@
             function generateTable(csv) {
                 const rows = csv.split('\n');
                 let table = '<table>';
+                console.log(rows)
                 rows.forEach((row, index) => {
                     const cells = row.split(',');
 
-                    console.log(cells)
+                    //console.log(cells)
                     
                     table += '<tr>';
                     cells.forEach(cell => {
@@ -68,7 +69,7 @@
                             </td>`;
                     }  
 
-                    if (index % 5 == 0)table += '</tr>';
+                    table += '</tr>'
                 });
                 table += '</table>';
                 document.getElementById('tableContainer').innerHTML = table;
