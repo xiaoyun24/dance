@@ -56,29 +56,34 @@
 
 
                 
-                table += '<tr>'
+                
                     
                 index = 0
-                while(index < number_row.length*2){
+
+                loop = number_row/4 + 1
+                
                     
-                    table += `<td>${number_row.at(index)}</td>`;
-                    if(index % 4 == 3){
-                        table += '/<tr>'
-                        table += '<tr>'
+                for (let l = 0; i < loop; i++){
+                    table += '<tr>'
+                    for(let i = 0; i < 4; i++){
+                        table += `<td>${number_row.at(loop*4 + i)}</td>`;
                     }
+                    table += '/<tr>'  
 
-                    index += 1
-
-                    table += `<td>${description_row.at(index)}</td>`;
-                    if(index % 4 == 3){
-                        table += '/<tr>'
-                        table += '<tr>'
+                    table += '<tr>'
+                    for(let i = 0; i < 4; i++){
+                    table += `<td>${description_row.at(loop*4 +i)}</td>`;
                     }
+                    table += '/<tr>'
 
-                    index += 1
+                    table += '<tr>'
+                    for(let i = 0; i < 4; i++){
+                        table += `<td><video width="320" height="240" controls><source src="8/8_${loop*4 +i}.mp4" type="video/mp4">8/8_${index}.mp4</video></td>`;
+                    }
+                    table += '/<tr>'
 
                 }
-                table += '/<tr>'
+                
                     
 
 
