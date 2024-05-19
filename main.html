@@ -55,12 +55,12 @@
                 console.log(description_row);
 
 
-                rows.forEach((row, index) => {
+                number_row.forEach(index => {
 
                     table += '<tr>'
                     while(index <= number_row.length){
                         
-                        table += `<td>${number_row[0]}</td>`;
+                        table += `<td>${number_row[index]}</td>`;
                         if(index % 5 == 4){
                             table += '/<tr>'
                             table += '<tr>'
