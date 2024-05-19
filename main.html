@@ -40,7 +40,21 @@
             function generateTable(csv) {
                 const rows = csv.split('\n');
                 let table = '<table>';
-                console.log(rows)
+                console.log(rows);
+
+                const number_row = [];
+                const description_row = [];
+
+                rows.forEach((row, index) => {
+                    const cells = row.split(',');
+                    number_row.push(cells[0]);
+                    description_row.push(cells[1])
+                })
+
+                console.log(ronumber_rowws);
+                console.log(description_row);
+
+
                 rows.forEach((row, index) => {
                     const cells = row.split(',');
 
