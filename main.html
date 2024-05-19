@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV to HTML Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    
+    
+</head>
+<body>
+    <h1>CSV to HTML Table</h1>
+    <div id="tableContainer"></div>
+
+    <script>
+
+        
+
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('8/output.csv') // Replace with the correct path to your CSV file
+                .then(response => response.text())
+                .then(csv => {
+                    generateTable(csv);
+                });
+
+            function generateTable(csv) {
+                const rows = csv.split('\n');
+                let table = '<table>';
+                rows.forEach((row, index) => {
+                    const cells = row.split(',');
+                    table += '<tr>';
+                    cells.forEach(cell => {
+                        table += index === 0 ? `<th>${cell}</th>` : `<td>${cell}</td>`;
+                    });
+                    table += '</tr>';
+                });
+                table += '</table>';
+                document.getElementById('tableContainer').innerHTML = table;
+            }
+        });
+    </script>
+</body>
+</html>
