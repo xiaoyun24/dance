@@ -56,34 +56,50 @@
 
 
                 rows.forEach((row, index) => {
-                    const cells = row.split(',');
 
-                    //console.log(cells)
+                    table += '<tr>'
+                    while(index < number_row.length){
+                        
+                        table += `<th>${number_row[index]}</th>`;
+                        if(index % 5 == 4){
+                            table += '/<tr>'
+                            table += '<tr>'
+                        }
+
+                    }
+                    table += '/<tr>'
                     
-                    table += '<tr>';
-                    cells.forEach(cell => {
-                        if(index === 0){
-                            table += `<th>${cell}</th>`;
-                        }else{
-                            table += `<td>${cell}</td>`;
-                        }  
-                    });
-                    if(index === 0){
-                        table += `<th>视频</th>`;
-                    }else{
-                        table += `<td>
 
-                            <video width="320" height="240" controls>
-                            <source src="8/8_${index}.mp4" type="video/mp4">
+
+
+                    // const cells = row.split(',');
+
+                    // //console.log(cells)
+                    
+                    // table += '<tr>';
+                    // cells.forEach(cell => {
+                    //     if(index === 0){
+                    //         table += `<th>${cell}</th>`;
+                    //     }else{
+                    //         table += `<td>${cell}</td>`;
+                    //     }  
+                    // });
+                    // if(index === 0){
+                    //     table += `<th>视频</th>`;
+                    // }else{
+                    //     table += `<td>
+
+                    //         <video width="320" height="240" controls>
+                    //         <source src="8/8_${index}.mp4" type="video/mp4">
                             
-                            8/8_${index}.mp4
-                            </video>
+                    //         8/8_${index}.mp4
+                    //         </video>
                             
             
-                            </td>`;
-                    }  
+                    //         </td>`;
+                    // }  
 
-                    table += '</tr>'
+                    // table += '</tr>'
                 });
                 table += '</table>';
                 document.getElementById('tableContainer').innerHTML = table;
