@@ -55,19 +55,22 @@
                 console.log(description_row);
 
 
-                number_row.forEach(index => {
-
-                    table += '<tr>'
-                    while(index <= number_row.length){
-                        
-                        table += `<td>${number_row.at(index)}</td>`;
-                        if(index % 5 == 4){
-                            table += '/<tr>'
-                            table += '<tr>'
-                        }
-
+                
+                table += '<tr>'
+                    
+                index = 0
+                while(index <= number_row.length){
+                    
+                    table += `<td>${number_row.at(index)}</td>`;
+                    if(index % 5 == 4){
+                        table += '/<tr>'
+                        table += '<tr>'
                     }
-                    table += '/<tr>'
+
+                    index += 1
+
+                }
+                table += '/<tr>'
                     
 
 
@@ -100,7 +103,7 @@
                     // }  
 
                     // table += '</tr>'
-                });
+                
                 table += '</table>';
                 document.getElementById('tableContainer').innerHTML = table;
             }
