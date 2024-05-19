@@ -66,19 +66,19 @@
                 for (let l = 0; l < loop; l++){
                     table += '<tr>'
                     for(let i = 0; i < 4; i++){
-                        table += `<td>${number_row.at(loop*4 + i)}</td>`;
+                        table += `<td>${number_row.at(l*4 + i)}</td>`;
                     }
                     table += '/<tr>'  
 
                     table += '<tr>'
                     for(let i = 0; i < 4; i++){
-                    table += `<td>${description_row.at(loop*4 +i)}</td>`;
+                    table += `<td>${description_row.at(l*4 +i)}</td>`;
                     }
                     table += '/<tr>'
 
                     table += '<tr>'
                     for(let i = 0; i < 4; i++){
-                        table += `<td><video width="320" height="240" controls><source src="8/8_${loop*4 +i}.mp4" type="video/mp4">8/8_${index}.mp4</video></td>`;
+                        table += `<td><video width="320" height="240" controls><source src="8/8_${l*4 +i}.mp4" type="video/mp4">8/8_${index}.mp4</video></td>`;
                     }
                     table += '/<tr>'
 
