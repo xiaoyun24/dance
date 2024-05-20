@@ -1,0 +1,56 @@
+
+\documentclass{article}
+\usepackage{CJKutf8}
+
+\usepackage{geometry}
+\geometry{a4paper, margin=0.3in}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.18}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multicol}
+
+
+\begin{document}
+
+\Large{Grade Report Card}
+\begin{CJK*}{UTF8}{gbsn}
+
+\begin{tabular}{p{0.6\linewidth}>{\raggedleft\arraybackslash}p{0.3\linewidth}}
+ 
+学生姓名： &  总分：\\
+
+学号：& 年纪排名：\\
+\end{tabular}
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        \textbf{Section} & \textbf{Subsection 1} & \textbf{Subsection 2} & \textbf{Subsection 3} & \textbf{Subsection 4} & \textbf{Total} \\
+        \hline
+        Section 1 & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} \\
+        \hline
+        Section 2 & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} \\
+        \hline
+        Section 3 & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} \\
+        \hline
+        Section 4 & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} \\
+        \hline
+        Section 5 & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} \\
+        \hline
+    \end{tabular}
+    \caption{Grades for each section and subsection}
+    \label{tab:grades}
+\end{table}
+
+\vspace{1cm}
+
+\section*{Radar Chart}
+\begin{center}
+
+\end{center}
+\end{CJK*}
+\end{document}
