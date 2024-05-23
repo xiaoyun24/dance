@@ -43,7 +43,11 @@
 
             var list = row.join(', ');
             
-            console.log(list);
+            document.getElementById('csvRow').innerHTML = `<pre>姓名: ${list[0]}</pre>`;
+            document.getElementById('csvRow').innerHTML = `<pre>学号: ${list[1]}</pre>`;
+            document.getElementById('csvRow').innerHTML = `<pre>班级: BAL21${list[2]}</pre>`;
+
+            
         }
     </script>
 </body>
