@@ -34,12 +34,12 @@
             const csvText = await fetchCSV();
             const rows = parseCSV(csvText);
 
-            if (rowNumber < 1 || rowNumber > rows.length) {
+            if (rowNumber < 353 || rowNumber > 452) {
                 alert('Row number out of range');
                 return;
             }
 
-            const row = rows[rowNumber - 1];
+            const row = rows[rowNumber - 349];
             document.getElementById('csvRow').innerHTML = `<pre>${row.join(', ')}</pre>`;
         }
     </script>
