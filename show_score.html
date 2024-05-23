@@ -4,6 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSV Row Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label, input, button {
+            margin: 10px 0;
+        }
+
+        input, button {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #5c6bc0;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #3949ab;
+        }
+
+        #csvRow {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #csvRow p {
+            margin: 5px 0;
+        }
+    </style>
 </head>
 <body>
     <h1>CSV Row Viewer</h1>
@@ -41,12 +94,6 @@
 
             const row = rows[rowNumber - 350];
 
-            console.log(row);
-
-            var list = row.join(',');
-
-            console.log(list);
-            
             document.getElementById('csvRow').innerHTML = `<p>姓名: ${row[0]}</p>
             <p>学号: ${row[1]}</p>
             <p>班级: BAL21${row[2]}</p>
@@ -57,8 +104,6 @@
             <p>个人剧目: ${row[7]}/30</p>
             <p>团队剧目: ${row[8]}/30</p>
             <p>素质测评: ${row[9]}/20</p>`;
-
-            
         }
     </script>
 </body>
