@@ -1,56 +1,184 @@
-
 \documentclass{article}
-\usepackage{CJKutf8}
 
-\usepackage{geometry}
-\geometry{a4paper, margin=0.3in}
+
+\usepackage{geometry}\geometry{a4paper,left=0.5cm,right=0.5cm,top=0.5cm,bottom=0.5cm}
+\usepackage{CJKutf8}
 \usepackage{graphicx}
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
-\pgfplotsset{compat=1.18}
+\pgfplotsset{compat=1.5}
 \usepackage{array}
 \usepackage{booktabs}
 \usepackage{multicol}
+\usepackage{tkz-kiviat,numprint} 
+\usetikzlibrary{arrows}
 
 
 \begin{document}
 
-\Large{Grade Report Card}
+
 \begin{CJK*}{UTF8}{gbsn}
 
-\begin{tabular}{p{0.6\linewidth}>{\raggedleft\arraybackslash}p{0.3\linewidth}}
- 
-学生姓名： &  总分：\\
+\section*{2024森铭中学二年级芭蕾期末成绩单}
 
-学号：& 年纪排名：\\
+
+\begin{tabular}{p{0.3\linewidth}p{0.3\linewidth}p{0.3\linewidth}}
+ 
+学生姓名：宋文杰 &学号：TK03516&  总分：141/150\\
+\multicolumn{2}{l}{考试类别：A-芭蕾专业期末(150分制)}& 年级排名：1\\ \hline
 \end{tabular}
 
-\begin{table}[ht]
-    \centering
-    \begin{tabular}{|c|c|c|c|c|c|}
-        \hline
-        \textbf{Section} & \textbf{Subsection 1} & \textbf{Subsection 2} & \textbf{Subsection 3} & \textbf{Subsection 4} & \textbf{Total} \\
-        \hline
-        Section 1 & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} \\
-        \hline
-        Section 2 & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} \\
-        \hline
-        Section 3 & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} \\
-        \hline
-        Section 4 & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} \\
-        \hline
-        Section 5 & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} \\
-        \hline
-    \end{tabular}
-    \caption{Grades for each section and subsection}
-    \label{tab:grades}
-\end{table}
 
-\vspace{1cm}
-
-\section*{Radar Chart}
 \begin{center}
 
+大项得分
+
 \end{center}
+
+\begin{tabular}{m{0.4\textwidth} m{0.6\textwidth}}
+
+\begin{tabular}{ccc}
+    
+    & 个人得分 & 班级均分 \\ 
+    主题曲 & 20/20 & 17/20 \\ 
+    基本功 & 47/50 & 32/50 \\ 
+    个人剧目 & 27/30 & 21/30 \\ 
+    团队剧目 & 28/30 & 23/30 \\ 
+    素质测评 & 19/20 & 14/20 \\ \hline
+    总分 & 141/150 & 107/150 \\ 
+    
+\end{tabular}
+
+&
+
+\begin{tikzpicture}
+    \tkzKiviatDiagram[scale=0.2,label space=4,
+    width=4cm, 
+    height=4cm,
+    radial  = 0.2 ,
+    gap     = 1, 
+    lattice = 10]{个人剧目,团队剧目,舞蹈素质测评, 主题曲,基本功}
+     \tkzKiviatLine[thick,
+                    color      = red,
+                    mark       = ball,
+                    ball color = red,
+                    mark size  = 3pt,
+                    opacity    = 0, 
+                    fill=red!20](27/3,28/3,19/2,20/2,47/5)
+    \tkzKiviatLine[thick,
+                   color      = blue,
+                   mark       = ball,
+                   mark size  = 3pt,
+                   fill       = blue!20,
+                   opacity=0.5](21/3,23/3,14/2,17/2,32/5)
+   \end{tikzpicture}  
+
+\\
+\end{tabular}
+
+
+\begin{center}
+年级分数分布
+
+
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+    \hline
+
+    &90以下&90-100&100-110&110-120&120-130&130-140&140-150 \\ \hline
+    人数 &11&13&15&21&11&2&1\\ \hline
+    
+\end{tabular}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        ybar,  
+        width=16cm, % Adjust the width to make it wider
+        height=4cm, % Adjust the height to make it flatter
+        bar width=0.6cm, % Adjust the bar width to ensure they are proportionate
+        enlargelimits=0.15,  
+        ylabel={\ 人数}, % the ylabel must precede a # symbol.   
+        symbolic x coords={90以下,90-100,100-110,110-120,120-130,130-140,140-150}, % these are the specification of coordinates on the x-axis.  
+        xtick=data
+      ]
+      \addplot coordinates {(90以下,11) (90-100,13) (100-110,15) (110-120,21) (120-130,11) (130-140,2) (140-150,1)};  
+    \end{axis}
+\end{tikzpicture}
+
+
+基本功得分
+
+
+\vspace{0.3cm}
+
+\begin{tabular}{|>{\normalsize}p{0.09\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.09\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.09\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.09\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.09\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.09\textwidth}>{\normalsize}p{0.04\textwidth}|}
+    \hline
+    \rule{0pt}{2.5ex}舞步 圆场 & 2/2 & 四拍舞步 & 2/2 & 地面练习 提沉转腰 & 2/2 & 含展横移 & 2/2 & 踢撩腿 & 2/2 & 大环动 & 2/2 \\ \hline
+    \rule{0pt}{2.5ex}压扳腿 & 2/2 & 大踢腿(一) & 2/2 & 扶把练习 & 2/2 & 蹲 & 2/2 & 小踢弹腿 & 2/2 & 端掖腿蹲 & 1/2 \\ \hline
+    \rule{0pt}{2.5ex}吸伸腿 & 2/2 & 大踢腿(二) & 1/2 & 中间练习 盘手 & 2/2 & 弯腰 & 2/2 & 平转 & 2/2 & 小跳(一) & 2/2 \\ \hline
+    \rule{0pt}{2.5ex}小跳(二) & 2/2 & 速度反应 & 2/2 & 蒙古族舞 & 2/3 & 唯吾尔族舞 & 3/3 & 傣族舞 & 3/3 & 总分 & \textbf{47/50} \\ \hline
+\end{tabular}
+
+\vspace{0.5cm}
+
+主题曲得分  
+\vspace{0.3cm}
+
+\begin{tabular}{|>{\normalsize}p{0.075\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.075\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.075\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.075\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.075\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.075\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.04\textwidth}>{\normalsize}p{0.04\textwidth}|}
+    \hline
+    \rule{0pt}{2.5ex} 技术动作 & 8/8 & 情感传达 & 4/4 & 肢体能量 & 2/2 & 乐感节奏 & 2/2 & 创新动作 & 3/3 & 舞台表现 & 1/1 & 总分 & \textbf{20/20}\\ \hline
+
+    
+\end{tabular}
+
+\vspace{0.5cm}
+
+个人剧目 
+
+\vspace{0.3cm}
+
+\begin{tabular}{|>{\normalsize}p{0.075\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.075\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.075\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.075\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.075\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.075\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.04\textwidth}>{\normalsize}p{0.04\textwidth}|}
+    \hline
+    \rule{0pt}{2.5ex}舞蹈技巧 & 5/6 & 艺术表现 & 6/6 & 编排创意 & 4/5 & 舞台表现 & 5/5 & 音乐理解 & 4/5 & 服装 & 3/3 & 总分 & \textbf{27/30}\\ \hline
+    
+\end{tabular}
+\vspace{0.5cm}
+
+团队剧目
+
+\vspace{0.3cm}
+
+\begin{tabular}{|>{\normalsize}p{0.080\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.080\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.080\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.075\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.075\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.06\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.04\textwidth}>{\normalsize}p{0.04\textwidth}|}
+    \hline
+    \rule{0pt}{2.5ex}技术动作1 & 5/5 & 技术动作2 & 5/5 &技术动作3 & 5/5 &团队协作 & 8/9 & 情感传达 & 5/6 & &    & 总分 & \textbf{28/30}\\ \hline
+    
+\end{tabular}
+
+\vspace{0.5cm}
+素质测评
+\vspace{0.3cm}
+
+\begin{tabular}{|>{\normalsize}p{0.075\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.075\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.075\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.075\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.075\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.075\textwidth}>{\normalsize}p{0.02\textwidth}|>{\normalsize}p{0.04\textwidth}>{\normalsize}p{0.04\textwidth}|}
+    \hline
+    \rule{0pt}{2.5ex}姿态体态 & 8/8 & 表现力 & 6/6 & 即兴编舞 & 5/6 &  &  &  &  &  &  & 总分 & \textbf{19/20}\\ \hline
+    
+\end{tabular}
+
+
+\end{center}
+
+\vspace{0.5cm}
+
+\textbf{教师评语:} 学生在本学期表现突出，技术动作掌握扎实，情感表达到位，望再接再厉。
+
+\vspace{0.5cm}
+
+
+\begin{tabular}{llll}
+    \textbf{教师签名:} & \includegraphics[width=5cm, height=2cm]{signature.png} & \textbf{学生签名:} & \underline{\hspace{5cm}} \\
+  
+    \end{tabular}
+
+    
 \end{CJK*}
 \end{document}

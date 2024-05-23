@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Row Viewer</title>
+</head>
+<body>
+    <h1>CSV Row Viewer</h1>
+    <label for="rowNumber">Enter Row Number:</label>
+    <input type="number" id="rowNumber" min="1">
+    <button onclick="showRow()">Show Row</button>
+    <div id="csvRow"></div>
+
+    <script>
+        async function fetchCSV() {
+            const response = await fetch('score.csv');
+            const data = await response.text();
+            return data;
+        }
+
+        function parseCSV(text) {
+            const rows = text.split('\n').map(row => row.split(','));
+            return rows;
+        }
+
+        async function showRow() {
+            const rowNumber = document.getElementById('rowNumber').value;
+            if (!rowNumber) {
+                alert('Please enter a row number');
+                return;
+            }
+
+            const csvText = await fetchCSV();
+            const rows = parseCSV(csvText);
+
+            if (rowNumber < 1 || rowNumber > rows.length) {
+                alert('Row number out of range');
+                return;
+            }
+
+            const row = rows[rowNumber - 1];
+            document.getElementById('csvRow').innerHTML = `<pre>${row.join(', ')}</pre>`;
+        }
+    </script>
+</body>
+</html>
