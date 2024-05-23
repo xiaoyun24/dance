@@ -42,6 +42,8 @@
             const row = rows[rowNumber - 350];
 
             var list = row.join(',');
+
+            console.log(list);
             
             document.getElementById('csvRow').innerHTML = `<p>姓名: ${list[0]}</p>
             <p>学号: ${list[1]}</p>
