@@ -40,7 +40,10 @@
             }
 
             const row = rows[rowNumber - 350];
-            document.getElementById('csvRow').innerHTML = `<pre>${row.join(', ')}</pre>`;
+
+            var list = row.join(', ');
+            
+            console.log(list);
         }
     </script>
 </body>
