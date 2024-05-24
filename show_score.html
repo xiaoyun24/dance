@@ -119,43 +119,7 @@
             return rows;
         }
 
-        function renderChart(score, maxScore) {
-            const ctx = document.getElementById('scoreChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    datasets: [{
-                        data: [score, maxScore - score],
-                        backgroundColor: ['#5c6bc0', '#e0e0e0'],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    cutoutPercentage: 80,
-                    tooltips: { enabled: false },
-                    hover: { mode: null },
-                    plugins: {
-                        datalabels: {
-                            display: true,
-                    
-                            formatter: (value, ctx) => {
-                                if (ctx.dataIndex === 0) {
-                                    return `${score}`;
-                                }
-                                return '';
-                            },
-                            color: '#3949ab',
-                            font: {
-                                weight: 'bold',
-                                size: '28'
-                            }
-                        }
-                    }
-                },
-                plugins: [ChartDataLabels]
-            });
-        }
-
+       
         async function showRow() {
             const rowNumber = document.getElementById('rowNumber').value;
             if (!rowNumber) {
