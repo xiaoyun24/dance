@@ -6,25 +6,30 @@
     <title>CSV Row Viewer</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            background-color: #f0f0f5;
         }
         .container {
             display: flex;
             width: 80%;
-            border: 1px solid #ccc;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
         }
         .left, .right {
-            padding: 20px;
+            padding: 30px;
             width: 50%;
         }
         .left {
-            border-right: 1px solid #ccc;
+            border-right: 1px solid #e0e0e0;
+            background-color: #fafafa;
         }
         .right {
             display: flex;
@@ -34,13 +39,38 @@
         }
         h1 {
             text-align: center;
+            color: #333;
         }
         label, input, button {
             display: block;
             margin: 10px 0;
+            width: 100%;
         }
-        #csvRow {
-            margin-top: 20px;
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+        input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #csvRow p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #333;
         }
     </style>
 </head>
@@ -49,7 +79,7 @@
         <div class="left">
             <h1>CSV Row Viewer</h1>
             <label for="rowNumber">Enter Row Number:</label>
-            <input type="number" id="rowNumber" min="1">
+            <input type="number" id="rowNumber" min="1" placeholder="Enter a number...">
             <button onclick="showRow()">Show Row</button>
         </div>
         <div class="right">
