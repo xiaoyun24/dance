@@ -144,24 +144,12 @@
             const row = rows[rowNumber - 350];
 
             document.getElementById('csvRow').innerHTML = `
-            <div>    
-             <div class="column">
+                <div class="column">
                     <p class = "info">姓名: ${row[0]}</p>
-                    
-                </div>
-                <div class="column">
-             
                     <p class = "info">学号: TK063${row[1]}</p>
-
-                </div>
-                <div class="column">
-
                     <p class = "info">班级: 芭蕾2(${row[2]})班</p>
                 </div>
-            </div>
-
-            <div>
-
+                
                 <div class="column">
                     <div class="score-circle">
                         <p class="ranking">总分</p>
@@ -178,11 +166,9 @@
                         <tr><td>团队剧目</td><td>${row[8]}/30</td></tr>
                         <tr><td>素质测评</td><td>${row[9]}/20</td></tr>
                     </table>
-                </div>
-                
                 </div>`;
 
-            
+            renderChart(row[4], 150);
         }
     </script>
 </body>
