@@ -66,6 +66,12 @@
             align-items: center;
         }
 
+        .info {
+            font-size: 2em;
+            margin-top: 5px;
+        }
+
+        
         .ranking {
             font-size: 1em;
             margin-top: 5px;
@@ -139,9 +145,9 @@
 
             document.getElementById('csvRow').innerHTML = `
                 <div class="column">
-                    <p>姓名: ${row[0]}</p>
-                    <p>学号: TK063${row[1]}</p>
-                    <p>班级: 芭蕾2(${row[2]})班</p>
+                    <p class = "info">姓名: ${row[0]}</p>
+                    <p class = "info">学号: TK063${row[1]}</p>
+                    <p class = "info">班级: 芭蕾2(${row[2]})班</p>
                 </div>
                 <div class="column">
                     <div class="score-circle">
