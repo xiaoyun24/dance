@@ -71,6 +71,12 @@
             margin-top: 5px;
         }
 
+        .score {
+            font-size: 3em;
+            margin-top: 5px;
+            color: #3949ab;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -175,7 +181,8 @@
                 </div>
                 <div class="column">
                     <div class="score-circle">
-                        <canvas id="scoreChart"></canvas>
+                        <p class="ranking">总分</p>
+                        <p class="score">${row[4]}</p>
                         <p class="ranking">排名: ${row[3]}</p>
                     </div>
                 </div>
