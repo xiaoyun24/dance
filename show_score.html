@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSV Row Viewer</title>
+    <title>2024森铭中学二年级芭蕾期末考试成绩查询</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -95,10 +95,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 </head>
 <body>
-    <h1>CSV Row Viewer</h1>
-    <label for="rowNumber">Enter Row Number:</label>
+    <h1>2024森铭中学二年级芭蕾期末考试成绩查询</h1>
+    <label for="rowNumber">输入学号</label>
     <input type="number" id="rowNumber" min="1">
-    <button onclick="showRow()">Show Row</button>
+    <button onclick="showRow()">查询</button>
     <div id="csvRow"></div>
 
     <script>
@@ -171,8 +171,8 @@
             document.getElementById('csvRow').innerHTML = `
                 <div class="column">
                     <p>姓名: ${row[0]}</p>
-                    <p>学号: ${row[1]}</p>
-                    <p>班级: BAL21${row[2]}</p>
+                    <p>学号: TK063${row[1]}</p>
+                    <p>班级: 芭蕾2(${row[2]})班</p>
                 </div>
                 <div class="column">
                     <div class="score-circle">
