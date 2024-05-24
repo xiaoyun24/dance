@@ -131,11 +131,10 @@
                     plugins: {
                         datalabels: {
                             display: true,
-                            formatter: (value, ctx) => {
-                                if (ctx.dataIndex === 0) {
-                                    return `${score} pts`;
-                                }
-                                return '';
+                            align: 'center',
+                            anchor: 'center',
+                            formatter: (value, context) => {
+                                return context.chart.data.datasets[0].data[0];
                             },
                             color: '#000',
                             font: {
