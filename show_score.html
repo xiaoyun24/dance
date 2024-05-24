@@ -133,8 +133,11 @@
                             display: true,
                             align: 'center',
                             anchor: 'center',
-                            formatter: (value, context) => {
-                                return context.chart.data.datasets[0].data[0];
+                            formatter: (value, ctx) => {
+                                if (ctx.dataIndex === 0) {
+                                    return `${score} pts`;
+                                }
+                                return '';
                             },
                             color: '#000',
                             font: {
