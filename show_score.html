@@ -155,18 +155,22 @@
 
             const row = rows[rowNumber - 350];
 
-            document.getElementById('csvRow').innerHTML = `
+            document.getElementById('row1').innerHTML = `
             <div class = "row">    
-            <div class="column">
+                <div class="column">
                     <p class = "info">姓名: ${row[0]}</p>
                 </div>
-                    <div class="column">
+                <div class="column">
                     <p class = "info">学号: TK063${row[1]}</p>
                 </div>
-                    <div class="column">
+                <div class="column">
                     <p class = "info">班级: 芭蕾2(${row[2]})班</p>
                 </div>
-            </div>
+            </div>`;
+
+            
+            document.getElementById('row2').innerHTML = `
+            
             <div class = "row">  
                 <div class="column">
                     
