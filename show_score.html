@@ -66,14 +66,8 @@
             align-items: center;
         }
 
-        .score-circle p {
-            font-size: 2em;
-            font-weight: bold;
-            margin: 0;
-        }
-
         .ranking {
-            font-size: 0.5em;
+            font-size: 1em;
             margin-top: 5px;
         }
 
@@ -93,11 +87,12 @@
         }
 
         canvas {
-            width: 100px;
-            height: 100px;
+            width: 150px;
+            height: 150px;
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 </head>
 <body>
     <h1>CSV Row Viewer</h1>
@@ -137,7 +132,10 @@
                         datalabels: {
                             display: true,
                             formatter: (value, ctx) => {
-                                return ctx.chart.data.datasets[0].data[0];
+                                if (ctx.dataIndex === 0) {
+                                    return `${score} pts`;
+                                }
+                                return '';
                             },
                             color: '#000',
                             font: {
@@ -146,7 +144,8 @@
                             }
                         }
                     }
-                }
+                },
+                plugins: [ChartDataLabels]
             });
         }
 
