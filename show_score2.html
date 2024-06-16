@@ -150,15 +150,21 @@
             color: #3949ab;
             text-align: center;
         }
+
+        .column3 {
+            flex: 1;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="left">
-            <h1>CSV Row Viewer</h1>
-            <label for="rowNumber">Enter Row Number:</label>
+            <h1>2024森铭中学二年级芭蕾期末考试成绩查询</h1>
+            <label for="rowNumber">请输入学号:</label>
             <input type="number" id="rowNumber" min="1" placeholder="Enter a number...">
-            <button onclick="showRow()">Show Row</button>
+            <button onclick="showRow()">查分</button>
         </div>
         <div class="right">
             <div id="row1"></div>
@@ -174,6 +180,13 @@
             const data = await response.text();
             return data;
         }
+
+        async function fetchRankCSV() {
+            const response1 = await fetch('ranking.csv');
+            const data1 = await response1.text();
+            return data1;
+        }
+
 
         function parseCSV(text) {
             const rows = text.split('\n').map(row => row.split(','));
@@ -191,12 +204,18 @@
             const csvText = await fetchCSV();
             const rows = parseCSV(csvText);
 
+            const csvRankText = await fetchRankCSV();
+            const rowsRank = parseCSV(csvRankText);
+
+
             if (rowNumber < 353 || rowNumber > 452) {
                 alert('Row number out of range');
                 return;
             }
 
             const row = rows[rowNumber - 350];
+            const rowRank= rowsRank[rowNumber - 352];
+
 
             document.getElementById('row1').innerHTML = `
              
@@ -255,33 +274,25 @@
             
 
                 document.getElementById('row3').innerHTML = `
-            
-              
-            <div class="column2">
-                
-                <p class="ranking">基本功</p>
-             
-            </div>
-            <div class="column2">
-                
-                <p class="ranking">主题曲</p>
-                
-            </div>
-            <div class="column2">
-                
-                <p class="ranking">个人剧目</p>
-             
-            </div>
-            <div class="column2">
-                
-                <p class="ranking">团队剧目</p>
-               
-            </div>
-            <div class="column2">
-                
-                <p class="ranking">素质测评</p><p class="ranking">总分</p>
+             <div class="column3">
                     
-            </div>`;
+                    <p class="ranking">第一轮排名</p>
+                    <p class="score">${rowRank[37]}</p>
+                    <p class="ranking">/100</p>
+                </div>
+                <div class="column3">
+                    
+                    <p class="ranking">第二轮排名</p>
+                    <p class="score">${rowRank[41]}</p>
+                    <p class="ranking">/100</p>
+                </div>
+                <div class="column3">
+                    
+                    <p class="ranking">第三轮排名</p>
+                    <p class="score">${rowRank[45]}</p>
+                    <p class="ranking">/100</p>
+                </div>
+                `;
             
      
         }
