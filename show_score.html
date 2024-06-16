@@ -67,6 +67,18 @@
             justify-content: space-between;
         }
 
+        #row3 {
+
+background-color: #fff;
+border: 1px solid #ccc;
+border-radius: 5px;
+width: 100%;
+max-width: 1000px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+display: flex;
+justify-content: space-between;
+}
+
         .column {
             flex: 1;
 
@@ -74,6 +86,12 @@
         }
 
         .column2 {
+            flex: 1;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        .column3 {
             flex: 1;
             border: 1px solid #ccc;
             text-align: center;
@@ -190,7 +208,7 @@
             }
 
             const row = rows[rowNumber - 350];
-            const rowRank= rowsRank[rowNumber - 350];
+            const rowRank= rowsRank[rowNumber - 352];
 
             document.getElementById('row1').innerHTML = `
              
@@ -250,23 +268,23 @@
                 </div>`;
             
              document.getElementById('row3').innerHTML = `
-             <div class="column2">
+             <div class="column3">
                     
                     <p class="ranking">第一轮排名</p>
                     <p class="score">${rowRank[37]}</p>
-                    <p class="ranking">/50</p>
+                    <p class="ranking">/100</p>
                 </div>
-                <div class="column2">
+                <div class="column3">
                     
                     <p class="ranking">第二轮排名</p>
                     <p class="score">${rowRank[41]}</p>
-                    <p class="ranking">/20</p>
+                    <p class="ranking">/100</p>
                 </div>
-                <div class="column2">
+                <div class="column3">
                     
                     <p class="ranking">第三轮排名</p>
                     <p class="score">${rowRank[45]}</p>
-                    <p class="ranking">/30</p>
+                    <p class="ranking">/100</p>
                 </div>
                 `;
                 
