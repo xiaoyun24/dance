@@ -150,12 +150,19 @@
     <button onclick="showRow()">查询</button>
     <div id="row1"></div>
     <div id="row2"></div>
+    <div id="row3"></div>
 
     <script>
         async function fetchCSV() {
-            const response = await fetch('score.csv');
-            const data = await response.text();
-            return data;
+            const response1 = await fetch('score.csv');
+            const data1 = await response1.text();
+            return data1;
+        }
+
+        async function fetchRankCSV() {
+            const response1 = await fetch('ranking.csv');
+            const data1 = await response1.text();
+            return data1;
         }
 
         function parseCSV(text) {
@@ -174,12 +181,16 @@
             const csvText = await fetchCSV();
             const rows = parseCSV(csvText);
 
+            const csvRankText = await fetchRankCSV();
+            const rowsRank = parseCSV(csvRankText);
+
             if (rowNumber < 353 || rowNumber > 452) {
                 alert('Row number out of range');
                 return;
             }
 
             const row = rows[rowNumber - 350];
+            const rowRank= rowsRank[rowNumber - 350];
 
             document.getElementById('row1').innerHTML = `
              
@@ -237,6 +248,29 @@
                         <p class="score2">${row[4]}</p>
                         <p class="ranking">排名: ${row[3]}</p>
                 </div>`;
+            
+             document.getElementById('row3').innerHTML = `
+             <div class="column2">
+                    
+                    <p class="ranking">第一轮排名</p>
+                    <p class="score">${rowRank[37]}</p>
+                    <p class="ranking">/50</p>
+                </div>
+                <div class="column2">
+                    
+                    <p class="ranking">第二轮排名</p>
+                    <p class="score">${rowRank[41]}</p>
+                    <p class="ranking">/20</p>
+                </div>
+                <div class="column2">
+                    
+                    <p class="ranking">第三轮排名</p>
+                    <p class="score">${rowRank[45]}</p>
+                    <p class="ranking">/30</p>
+                </div>
+                `;
+                
+                
             
      
         }
