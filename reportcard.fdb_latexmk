@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1716500011 "/Users/xuhaoyun/Desktop/dance/reportcard.tex" "reportcard.pdf" "reportcard" 1716500012 0
-  "/Users/xuhaoyun/Desktop/dance/reportcard.tex" 1716344125 7062 c17d2de9d7b4aa41a030e8f6c6606065 ""
+["pdflatex"] 1718568367 "/Users/xuhaoyun/Desktop/dance/reportcard.tex" "reportcard.pdf" "reportcard" 1718568368 0
+  "/Users/xuhaoyun/Desktop/dance/reportcard.tex" 1718568048 7068 6abcc537fbcd33f01e020f88edf0cc08 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/arphic/gbsnu/gbsnu30.tfm" 1198435261 1252 fec599f1363dee7f5677ebd04aaa877b ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/arphic/gbsnu/gbsnu4e.tfm" 1198435261 1288 02bce64a038ecf122ed75de51b555288 ""
@@ -277,8 +277,8 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1685160281 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1685160208 7883455 9cb58206794b7cf03a0f4196ec730103 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "reportcard.aux" 1716500012 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "reportcard.tex" 1716344125 7062 c17d2de9d7b4aa41a030e8f6c6606065 ""
+  "reportcard.aux" 1718568367 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "reportcard.tex" 1718568048 7068 6abcc537fbcd33f01e020f88edf0cc08 ""
   "signature.png" 1716264936 15208 fd2cb9e02a92f5f9dfa72f8b1f1597b2 ""
   "tkz-kiviat.sty" 1537404396 10212 5107b7f25ef06839be2f15ac057a4138 ""
   (generated)
