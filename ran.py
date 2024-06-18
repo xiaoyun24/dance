@@ -75,8 +75,8 @@ random.shuffle(numbers)
 tk_exam_group = [None] * 100
 tk_exam_pos = [None] * 100
 for i in range(len(numbers)):
-  tk_exam_group[i] = numbers[i] /15 + 1
-  tk_exam_pos[i] =  numbers[i] %15 + 1
+  tk_exam_group[i] = numbers[i] /5 + 1
+  tk_exam_pos[i] =  numbers[i] %5 + 1
 
 tk_class_sequence = list(range(0, 100))
 random.shuffle(tk_class_sequence)
