@@ -505,37 +505,37 @@ with open('written_score.csv', 'a', newline='') as file:
 
 
 
-# history_list = lists[84:99]
+history_list = lists[88:103]
 
-# history_total_matrix = np.zeros_like(history_list)
-# history_total_matrix[0] = history_list[0]
-# for i in range(1, np.shape(history_list)[0]):
-#     history_total_matrix[i] = np.sum(history_list[:i+1], axis=0)
-
-
-# history_rank_matrix = np.zeros_like(history_list)
-# for i in range(0, np.shape(history_list)[0]):
-#     history_rank_matrix[i] = history_total_matrix[i].argsort()[::-1].argsort() + 1
+history_total_matrix = np.zeros_like(history_list)
+history_total_matrix[0] = history_list[0]
+for i in range(1, np.shape(history_list)[0]):
+    history_total_matrix[i] = np.sum(history_list[:i+1], axis=0)
 
 
-# semester_score = history_total_matrix[-1] + dan_total_score*5
-# semester_rank = 100 - semester_score.argsort()[::-1].argsort() 
+history_rank_matrix = np.zeros_like(history_list)
+for i in range(0, np.shape(history_list)[0]):
+    history_rank_matrix[i] = history_total_matrix[i].argsort()[::-1].argsort() + 1
+
+
+semester_score = history_total_matrix[-1] + (dan_total_score + gym_total_score +tk_total_score + tk_fight_total_score + written_total_score )*3
+semester_rank = 100 - semester_score.argsort()[::-1].argsort() 
 
 
 
-# rank = np.vstack(( person_num,  history_list, history_total_matrix, dan_total_score, semester_score, history_rank_matrix , ranking, semester_rank))
-# rank = rank.T
-# rank = rank.astype(int)
+rank = np.vstack(( person_num,   history_rank_matrix ,  semester_rank))
+rank = rank.T
+rank = rank.astype(int)
 
 
-# csv_ranking_intro = ["姓名", "学号"] + ["第"+str(i + 1)+"周得分" for i in range(15)]  + ["第"+str(i + 1)+"总得分" for i in range(15)] + ["期末考试成绩", "学期成绩"]+ ["第"+str(i + 1)+"周排名" for i in range(15)] + ["期末考试排名", "学期排名"]
+csv_ranking_intro = ["姓名", "学号", "专业"] + ["第"+str(i + 1)+"周排名" for i in range(15)] + [ "学期排名"]
 
-# with open('ranking.csv', 'a', newline='') as file:
-#    writer = csv.writer(file)
-#    writer.writerow(csv_ranking_intro)
-#    for i in range(len(rank)):
+with open('ranking.csv', 'a', newline='') as file:
+   writer = csv.writer(file)
+   writer.writerow(csv_ranking_intro)
+   for i in range(len(rank)):
       
-#       writer.writerow([name_list[i]] + list(rank[i]))
+      writer.writerow([name_list[i]] + [major_list[i]] + list(rank[i]))
 
 
 
