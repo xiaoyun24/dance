@@ -1,8 +1,16 @@
 import numpy as np
 import csv
 import random
+import os
 
-
+os.remove('ballet_score.csv')
+os.remove('final_exam_score.csv')
+os.remove('gym_score.csv')
+os.remove('ranking.csv')
+os.remove('tk_fight_score.csv')
+os.remove('student_info.csv')
+os.remove('tk_score.csv')
+os.remove('written_score.csv')
 
 name_list = ['白宇轩', '卞博文', '曹天宇', '常俊杰', '程昊天', '程子涵', '陈思羽', '陈思源', '陈子涵', '崔宇轩', '戴宇翔', '戴宇轩', '邓思羽', '邓子轩', '丁浩天', '翟子涵', '董子睿', '冯子睿', '付子豪', '高俊凯', '高思羽', '郭浩宇', '郭子豪', '韩思源', '何昊然', '贺俊杰', '何天宇', '贺宇翔', '华俊凯', '黄子涵', '胡俊凯', '胡天睿', '蒋睿博', '江宇轩', '蒋子睿', '蒋子轩', '柯昊然', '柯杰尹', '孔维熙', '黎博文', '李浩然', '李俊杰', '李俊熙', '林子轩', '李瑞泽', '刘瑞杰', '刘宇轩', '龙俊杰', '罗宇航', '马子睿', '潘子涵', '彭子航', '钱子豪', '史俊豪', '宋文杰', '孙思远', '孙子涵', '谭博文', '唐子豪', '唐子轩', '王俊豪', '王宇轩', '王子睿', '韦俊豪', '文子睿', '吴昊天', '吴子睿', '萧俊豪', '夏扬', '谢俊杰', '谢子涵', '熊昊天', '许晨曦', '许晨曦', '薛宇航', '徐浩云', '许睿杰', '徐思远', '许子睿', '杨博文', '杨晨轩', '杨宇轩', '袁俊杰', '袁宇翔', '张俊豪', '张文博', '张宇航', '赵嘉文', '赵云飞', '赵子涵', '赵子睿', '郑浩天', '郑子睿', '周俊豪', '周宇浩', '周宇翔', '周子轩', '朱博文', '朱浩宇', '朱俊熙']
 person_num = np.linspace(353, 452, 100, dtype=int)  
@@ -179,9 +187,9 @@ written_ranges = [(0,150)] + [(0,100)] * 2
 
 
 
-prev_means = [70]*7 + [200] +  [70]*7
-prev_std_devs = [9 ]*7 + [13] +  [9 ]*7
-prev_ranges = [(0,100)]*7 + [(0,300)] + [(0,100)]*7
+prev_means = [70]*7 + [200] +  [70]*7 + [200]
+prev_std_devs = [9 ]*7 + [13] +  [9 ]*7 + [13]
+prev_ranges = [(0,100)]*7 + [(0,300)] + [(0,100)]*7 + [(0,300)]
 
 
 means = dan_jbg_means + dan_ztq_means + dan_gj_means + dan_tj_means + dan_sz_means \
@@ -530,7 +538,7 @@ with open('final_exam_score.csv', 'a', newline='') as file:
 
 
 
-history_list = lists[88:103]
+history_list = lists[88:104]
 
 history_total_matrix = np.zeros_like(history_list)
 history_total_matrix[0] = history_list[0]
@@ -553,7 +561,7 @@ rank = rank.T
 rank = rank.astype(int)
 
 
-csv_ranking_intro = ["姓名",  "专业", "学号"] + ["第"+str(i + 1)+"总得分" for i in range(15)] + ["期末考试成绩", "学期成绩"] +  ["第"+str(i + 1)+"周排名" for i in range(15)] + [ "学期排名"]
+csv_ranking_intro = ["姓名",  "专业", "学号"] + ["第"+str(i + 1)+"总得分" for i in range(16)] + ["期末考试成绩", "学期成绩"] +  ["第"+str(i + 1)+"周排名" for i in range(16)] + [ "学期排名"]
 
 with open('ranking.csv', 'a', newline='') as file:
    writer = csv.writer(file)
