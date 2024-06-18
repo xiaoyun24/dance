@@ -125,7 +125,6 @@
 
         .column {
             flex: 1;
-
             text-align: center;
         }
 
@@ -137,6 +136,7 @@
 
 
         .info {
+            flex: 1;
             font-size: 1.5em;
             margin-top: 5px;
         }
@@ -149,6 +149,7 @@
         }
 
         .score {
+            flex: 1;
             margin-top: 5px;
             font-size: 1.5em;
             color: #3949ab;
@@ -272,57 +273,36 @@
 
             var s = parseInt(row[8])+ parseInt(row[9]);
 
-
-   
+      
 
             document.getElementById('row2').innerHTML = `
-              <div class="column">  
+              <div class="column">
+                    
                     <p class = "info">个人挠痒</p>
-                    <p class="score">${row[11]}</p>
-                </div>
-                <div class="column">
                     <p class = "info">对决挠痒</p>
-                    <p class="score">${row[13]}</p>
-                      
-                </div>
-                <div class="column">
                     <p class = "info">挠痒笔试</p>
-                    <p class="score">${row[6]}</p>
-                      
-                </div>
-                <div class="column">
                     <p class = "info">${wri}</p>
-                    <p class="score">${s}</p>
-                      
-                </div>
-
-                <div class="column">
                     <p class = "info">${bal}</p>
-                    <p class="score">${row[15]}</p>
-                      
-                </div>
-
-                <div class="column">
                     <p class = "info">${gym}</p>
-                    <p class="score">${row[17]}</p>
-                      
-                </div>
-
-                
-            
-            `;
-
-            document.getElementById('row3').innerHTML = `
-              <div class="column">  
-                <p class = "info">期末考试总分</p>
-                <p class="score">${row[4]}</p>
+                    <p class = "info">期末考试总分</p>
+                    <p class = "info">期末考试排名</p>
                 </div>
                 <div class="column">
-                    <p class = "info">期末考试排名</p>
+
+                    <p class="score">${row[11]}</p>
+                    <p class="score">${row[13]}</p>
+
+
+                    <p class="score">${row[6]}</p>
+                    <p class="score">${s}</p>
+
+                    <p class="score">${row[15]}</p>
+                    <p class="score">${row[17]}</p>
+                    
+                    <p class="score">${row[4]}</p>
                     <p class="score">${row[5]}</p>
-                      
+                    
                 </div>
-               
             
             `;
 
