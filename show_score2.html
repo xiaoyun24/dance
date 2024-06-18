@@ -194,7 +194,7 @@
 
     <script>
         async function fetchCSV() {
-            const response = await fetch('score.csv');
+            const response = await fetch('final_exam_score.csv');
             const data = await response.text();
             return data;
         }
@@ -203,6 +203,12 @@
             const response1 = await fetch('ranking.csv');
             const data1 = await response1.text();
             return data1;
+        }
+
+        async function fetchStudentInfoCSV() {
+            const response = await fetch('student_info.csv');
+            const data = await response.text();
+            return data;
         }
 
 
@@ -225,13 +231,16 @@
             const csvRankText = await fetchRankCSV();
             const rowsRank = parseCSV(csvRankText);
 
+            const csvStudentInfoText = await fetchCSV();
+            const rowsStudentInfo = parseCSV(csvStudentInfoText);
+
 
             if (rowNumber < 353 || rowNumber > 452) {
                 alert('Row number out of range');
                 return;
             }
 
-            const row = rows[rowNumber - 350];
+            const row = rows[rowNumber - 352];
             const rowRank= rowsRank[rowNumber - 352];
 
 
@@ -241,119 +250,124 @@
                     <p class = "info">姓名: ${row[0]}</p>
                 </div>
                 <div class="column">
-                    <p class = "info">学号: TK063${row[1]}</p>
+                    <p class = "info">学号: TK063${row[3]}</p>
                 </div>
                 <div class="column">
-                    <p class = "info">班级: 芭蕾2(${row[2]})班</p>
+                    <p class = "info">专业: ${row[1]}</p>
                 </div>
+                
+            `;
+
+            var bal, gym, wri;
+
+            if (row[2] == 40){
+                bal = "二年级芭蕾B(选修)";
+                gym = "二年级体操A(专业)";
+                wri = "体操笔试";
+            }else{
+                bal = "二年级芭蕾A(专业)";
+                gym = "二年级体操B(选修)";
+                wri = "芭蕾笔试";
+            }
+
+            document.getElementById('row2').innerHTML = `
+              <div class="column">
+                    
+                    <p class = "info">个人挠痒</p>
+                    <p class = "info">对决挠痒</p>
+                    <p class = "info">挠痒笔试</p>
+                    <p class = "info">${wri}</p>
+                    <p class = "info">${bal}</p>
+                    <p class = "info">${gym}</p>
+                    <p class = "info">期末考试总分</p>
+                    <p class = "info">期末考试排名</p>
+                </div>
+                <div class="column">
+
+                    <p class="score">${row[11]}</p>
+                    <p class="score">${row[13]}</p>
+
+
+                    <p class="score">${row[6]}</p>
+                    <p class="score">${row[8] + row[9]}</p>
+
+                    <p class="score">${row[15]}</p>
+                    <p class="score">${row[17]}</p>
+                    
+                    <p class="score">${row[4]}</p>
+                    <p class="score">${row[5]}</p>
+                    
+                </div>
+            
             `;
 
             
-            document.getElementById('row2').innerHTML = `
+            // document.getElementById('row2').innerHTML = `
             
               
-                <div class="column2">
+            //     <div class="column2">
                     
-                    <p class="ranking">基本功</p>
-                    <p class="score">${row[5]}</p>
-                    <p class="ranking">/50</p>
-                </div>
-                <div class="column2">
+            //         <p class="ranking">基本功</p>
+            //         <p class="score">${row[5]}</p>
+            //         <p class="ranking">/50</p>
+            //     </div>
+            //     <div class="column2">
                     
-                    <p class="ranking">主题曲</p>
-                    <p class="score">${row[6]}</p>
-                    <p class="ranking">/20</p>
-                </div>
-                <div class="column2">
+            //         <p class="ranking">主题曲</p>
+            //         <p class="score">${row[6]}</p>
+            //         <p class="ranking">/20</p>
+            //     </div>
+            //     <div class="column2">
                     
-                    <p class="ranking">个人剧目</p>
-                    <p class="score">${row[7]}</p>
-                    <p class="ranking">/30</p>
-                </div>
-                <div class="column2">
+            //         <p class="ranking">个人剧目</p>
+            //         <p class="score">${row[7]}</p>
+            //         <p class="ranking">/30</p>
+            //     </div>
+            //     <div class="column2">
                     
-                    <p class="ranking">团队剧目</p>
-                    <p class="score">${row[8]}</p>
-                    <p class="ranking">/30</p>
-                </div>
-                <div class="column2">
+            //         <p class="ranking">团队剧目</p>
+            //         <p class="score">${row[8]}</p>
+            //         <p class="ranking">/30</p>
+            //     </div>
+            //     <div class="column2">
                     
-                    <p class="ranking">素质测评</p>
-                    <p class="score">${row[9]}</p>
-                    <p class="ranking">/20</p>
-                </div>
+            //         <p class="ranking">素质测评</p>
+            //         <p class="score">${row[9]}</p>
+            //         <p class="ranking">/20</p>
+            //     </div>
                 
-                <div class="column2">
+            //     <div class="column2">
     
-                        <p class="ranking">总分</p>
-                        <p class="score2">${row[4]}</p>
-                        <p class="ranking">排名: ${row[3]}</p>
-                </div>`;
+            //             <p class="ranking">总分</p>
+            //             <p class="score2">${row[4]}</p>
+            //             <p class="ranking">排名: ${row[3]}</p>
+            //     </div>`;
 
 
 
-                document.getElementById('row2').innerHTML = `
-            
-              
-                <div class="column2">
-                    
-                    <p class="ranking">基本功</p>
-                    <p class="score">${row[5]}</p>
-                    <p class="ranking">/50</p>
-                </div>
-                <div class="column2">
-                    
-                    <p class="ranking">主题曲</p>
-                    <p class="score">${row[6]}</p>
-                    <p class="ranking">/20</p>
-                </div>
-                <div class="column2">
-                    
-                    <p class="ranking">个人剧目</p>
-                    <p class="score">${row[7]}</p>
-                    <p class="ranking">/30</p>
-                </div>
-                <div class="column2">
-                    
-                    <p class="ranking">团队剧目</p>
-                    <p class="score">${row[8]}</p>
-                    <p class="ranking">/30</p>
-                </div>
-                <div class="column2">
-                    
-                    <p class="ranking">素质测评</p>
-                    <p class="score">${row[9]}</p>
-                    <p class="ranking">/20</p>
-                </div>
                 
-                <div class="column2">
-    
-                        <p class="ranking">总分</p>
-                        <p class="score2">${row[4]}</p>
-                        <p class="ranking">排名: ${row[3]}</p>
-                </div>`;
             
 
-                document.getElementById('row4').innerHTML = `
-             <div class="column3">
+            //     document.getElementById('row4').innerHTML = `
+            //  <div class="column3">
                     
-                    <p class="ranking">第一轮排名</p>
-                    <p class="score">${rowRank[37]}</p>
-                    <p class="ranking">/100</p>
-                </div>
-                <div class="column3">
+            //         <p class="ranking">第一轮排名</p>
+            //         <p class="score">${rowRank[37]}</p>
+            //         <p class="ranking">/100</p>
+            //     </div>
+            //     <div class="column3">
                     
-                    <p class="ranking">第二轮排名</p>
-                    <p class="score">${rowRank[41]}</p>
-                    <p class="ranking">/100</p>
-                </div>
-                <div class="column3">
+            //         <p class="ranking">第二轮排名</p>
+            //         <p class="score">${rowRank[41]}</p>
+            //         <p class="ranking">/100</p>
+            //     </div>
+            //     <div class="column3">
                     
-                    <p class="ranking">第三轮排名</p>
-                    <p class="score">${rowRank[45]}</p>
-                    <p class="ranking">/100</p>
-                </div>
-                `;
+            //         <p class="ranking">第三轮排名</p>
+            //         <p class="score">${rowRank[45]}</p>
+            //         <p class="ranking">/100</p>
+            //     </div>
+            //     `;
             
      
         }
