@@ -15,6 +15,10 @@ gym_index.sort()
 bal_index = numbers[40:]
 bal_index.sort()
 
+major_count = [60] * 100
+for i in gym_index:
+   major_count[i] = 40
+
 
 gym_class_sequence = [None] * 100
 numbers = list(range(0, 40))
@@ -504,6 +508,27 @@ with open('written_score.csv', 'a', newline='') as file:
 
 
 
+final_exams_csv_intro = ["姓名","专业","专业人数","学号",
+                 "总分", "期末考试排名",
+                 "挠痒理论","挠痒排名","芭蕾理论","体操理论","专业理论排名",
+                 "个人挠痒","个人挠痒排名","挠痒对决","挠痒对决排名","芭蕾","芭蕾排名","体操","体操排名"] 
+final_exam_final_score = written_total_score + tk_total_score + tk_fight_total_score + dan_total_score + gym_total_score
+final_exam_final_rank = 100 - final_exam_final_score.argsort()[::-1].argsort() 
+final_exam_score = np.vstack((major_count, person_num,final_exam_final_score, final_exam_final_rank, 
+                               lists[85], written_tickle_ranking, lists[86:88] , written_major_ranking,
+                               tk_total_score ,tk_ranking, tk_fight_total_score ,tk_fight_ranking,
+                                 dan_total_score ,dan_ranking, gym_total_score,gym_ranking))
+final_exam_score = final_exam_score.T
+final_exam_score = final_exam_score.astype(int)
+
+
+with open('final_exam_score.csv', 'a', newline='') as file:
+   writer = csv.writer(file)
+   writer.writerow(final_exams_csv_intro)
+   for i in range(len(final_exam_score)):
+     writer.writerow([name_list[i]] + [major_list[i]] + list(final_exam_score[i]))
+
+
 
 history_list = lists[88:103]
 
@@ -518,7 +543,7 @@ for i in range(0, np.shape(history_list)[0]):
     history_rank_matrix[i] = history_total_matrix[i].argsort()[::-1].argsort() + 1
 
 
-semester_score = history_total_matrix[-1] + (dan_total_score + gym_total_score +tk_total_score + tk_fight_total_score + written_total_score )*3
+semester_score = history_total_matrix[-1] + (dan_total_score + gym_total_score +tk_total_score + tk_fight_total_score + written_total_score )*1
 semester_rank = 100 - semester_score.argsort()[::-1].argsort() 
 
 
