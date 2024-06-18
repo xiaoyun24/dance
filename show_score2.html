@@ -111,6 +111,17 @@
             display: flex;
             justify-content: space-between;
         }
+        #row4 {
+
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 1000px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            }
 
         .column {
             flex: 1;
@@ -156,6 +167,12 @@
             border: 1px solid #ccc;
             text-align: center;
         }
+
+        .column4 {
+            flex: 1;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -170,6 +187,7 @@
             <div id="row1"></div>
             <div id="row2"></div>
             <div id="row3"></div>
+            <div id="row4"></div>
 
         </div>
     </div>
@@ -271,9 +289,52 @@
                         <p class="score2">${row[4]}</p>
                         <p class="ranking">排名: ${row[3]}</p>
                 </div>`;
+
+
+
+                document.getElementById('row2').innerHTML = `
+            
+              
+                <div class="column2">
+                    
+                    <p class="ranking">基本功</p>
+                    <p class="score">${row[5]}</p>
+                    <p class="ranking">/50</p>
+                </div>
+                <div class="column2">
+                    
+                    <p class="ranking">主题曲</p>
+                    <p class="score">${row[6]}</p>
+                    <p class="ranking">/20</p>
+                </div>
+                <div class="column2">
+                    
+                    <p class="ranking">个人剧目</p>
+                    <p class="score">${row[7]}</p>
+                    <p class="ranking">/30</p>
+                </div>
+                <div class="column2">
+                    
+                    <p class="ranking">团队剧目</p>
+                    <p class="score">${row[8]}</p>
+                    <p class="ranking">/30</p>
+                </div>
+                <div class="column2">
+                    
+                    <p class="ranking">素质测评</p>
+                    <p class="score">${row[9]}</p>
+                    <p class="ranking">/20</p>
+                </div>
+                
+                <div class="column2">
+    
+                        <p class="ranking">总分</p>
+                        <p class="score2">${row[4]}</p>
+                        <p class="ranking">排名: ${row[3]}</p>
+                </div>`;
             
 
-                document.getElementById('row3').innerHTML = `
+                document.getElementById('row4').innerHTML = `
              <div class="column3">
                     
                     <p class="ranking">第一轮排名</p>

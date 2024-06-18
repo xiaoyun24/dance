@@ -163,30 +163,34 @@ tk_parts_means = ([random.uniform(4,5)] + [random.uniform(3,4)] * 2) * 5
 tk_parts_std_devs = [random.uniform(0.8,1.2)]*15
 tk_parts_ranges = ([(1,6)]*2 + [(1,5)]) * 5
 
+tk_fight_means = [45]*4
+tk_fight_std_devs = [random.uniform(10,15)] * 4
+tk_fight_ranges = [(0,101)] * 4
+
 
 written_means = [random.uniform(100,110)] + [random.uniform(74,76)] * 2
-written_std_devs = [random.uniform(2,3)] + [random.uniform(1,2)]*2
+written_std_devs = [random.uniform(15,20)] + [random.uniform(10,12)]*2
 written_ranges = [(0,150)] + [(0,100)] * 2
 
 
 
 
-prev_means = [70]*15
-prev_std_devs = [13 ]*15
-prev_ranges = [(0,100)]*15
+prev_means = [70]*7 + [200] +  [70]*7
+prev_std_devs = [9 ]*7 + [13] +  [9 ]*7
+prev_ranges = [(0,100)]*7 + [(0,300)] + [(0,100)]*7
 
 
 means = dan_jbg_means + dan_ztq_means + dan_gj_means + dan_tj_means + dan_sz_means \
 + gym_exercise_means + gym_run_means+gym_art_means+gym_strength_means+gym_balance_means\
-+ tk_overall_means +tk_parts_means+written_means+prev_means
++ tk_overall_means +tk_parts_means + tk_fight_means +written_means+prev_means
 
 std_devs = dan_jbg_std_devs + dan_ztq_std_devs + dan_gj_std_devs + dan_tj_std_devs + dan_sz_std_devs \
 + gym_exercise_std_devs + gym_run_std_devs+gym_art_std_devs+gym_strength_std_devs+gym_balance_std_devs\
-+ tk_overall_std_devs +tk_parts_std_devs+written_std_devs+prev_std_devs
++ tk_overall_std_devs +tk_parts_std_devs+tk_fight_std_devs+written_std_devs+prev_std_devs
 
 ranges = dan_jbg_ranges + dan_ztq_ranges + dan_gj_ranges + dan_tj_ranges + dan_sz_ranges \
 + gym_exercise_ranges + gym_run_ranges+gym_art_ranges+gym_strength_ranges+gym_balance_ranges\
-+ tk_overall_ranges +tk_parts_ranges+written_ranges+prev_ranges
++ tk_overall_ranges +tk_parts_ranges+tk_fight_ranges+written_ranges+prev_ranges
 
 length = len(means)
 
@@ -299,11 +303,26 @@ for l in lists[78:81]:
 for l in lists[63:81]:
    tk_total_score += l 
 
+tk_fight_total_score = np.zeros((1,100))
+
+for l in lists[81:85]:
+   tk_fight_total_score += l 
+
 written_total_score = np.zeros((1,100))
 
-for l in lists[81:84]:
-   tk_total_score += l 
+for i in gym_index:
+   lists[86][i] *= 0
+for i in bal_index:
+   lists[87][i] *= 0
 
+for l in lists[85:88]:
+   written_total_score += l 
+
+
+prev_total_score = np.zeros((1,100))
+
+for l in lists[88:103]:
+   prev_total_score += l 
 
 
 
@@ -407,31 +426,100 @@ with open('gym_score.csv', 'a', newline='') as file:
 
 
 
+tk_csv_intro = ["姓名","专业","学号","班号","排名",
+                 "总分",
+                 "总体", "脖颈", "腋窝","腰背","大腿", "综合"] +  ["持久性", "反应强度", "调节能力"] * 5
+tk_csv_total = [0,0, 0,0,0, 
+                 100,
+                 20, 16,16,16,16,16]+[6,5,5]*5
+tk_csv_average = [0,0,0,0,0 ] + [sum(tk_overall_means) + sum(tk_parts_means)  ] +  [sum(tk_overall_means)] + [sum(tk_parts_means[0:3])] + [sum(tk_parts_means[3:6])] + [sum(tk_parts_means[6:9])] + [sum(tk_parts_means[9:12])] + [sum(tk_parts_means[12:15])] +  tk_overall_means + tk_parts_means
+tk_csv_average = np.array(tk_csv_average, dtype  = np.float64)
+
+tk_ranking = 100 - tk_total_score.argsort()[::-1].argsort()
+
+
+tk_score = np.vstack(( person_num, tk_class_sequence, tk_ranking, tk_total_score, tk_overall_score , tk_neck_score , tk_arm_score , tk_waist_score , tk_leg_score, tk_foot_score, lists[63:81]))
+tk_score = tk_score.T
+tk_score = tk_score.astype(int)
+
+
+with open('tk_score.csv', 'a', newline='') as file:
+   writer = csv.writer(file)
+   writer.writerow(tk_csv_intro)
+   writer.writerow(tk_csv_total)
+   writer.writerow(tk_csv_average)
+   for i in range(len(tk_score)):
+     writer.writerow([name_list[i]] + [major_list[i]] + list(tk_score[i]))
+
+
+tk_fight_csv_intro = ["姓名","专业","学号","班号","排名",
+                 "总分",
+                 "对决1","对决2","对决3","对决4",] 
+tk_fight_csv_total = [0,0, 0,0,0, 
+                 404,
+                 101,101,101,101]
+tk_fight_csv_average = [0,0,0,0,0 ] + [sum(tk_fight_means) ] + tk_fight_means
+tk_fight_csv_average = np.array(tk_fight_csv_average, dtype  = np.float64)
+
+tk_fight_ranking = 100 - tk_fight_total_score.argsort()[::-1].argsort()
+
+
+tk_fight_score = np.vstack(( person_num, tk_class_sequence, tk_fight_ranking, tk_fight_total_score,  lists[81:85]))
+tk_fight_score = tk_fight_score.T
+tk_fight_score = tk_fight_score.astype(int)
+
+
+with open('tk_fight_score.csv', 'a', newline='') as file:
+   writer = csv.writer(file)
+   writer.writerow(tk_fight_csv_intro)
+   writer.writerow(tk_fight_csv_total)
+   writer.writerow(tk_fight_csv_average)
+   for i in range(len(tk_fight_score)):
+     writer.writerow([name_list[i]] + [major_list[i]] + list(tk_fight_score[i]))
+
+written_csv_intro = ["姓名","专业","学号",
+                 "挠痒排名","专业排名","挠痒理论","芭蕾理论","体操理论","总分",] 
+written_csv_total = [0,0, 0,0,0
+                 ,150,100,100,250]
+written_csv_average = [0,0,0,0,0 ] + written_means + [sum(written_means) ] 
+written_csv_average = np.array(written_csv_average, dtype  = np.float64)
+
+written_tickle_ranking =  lists[85].argsort()[::-1].argsort() + 1
+
+written_major_ranking =  np.minimum(lists[86].argsort()[::-1].argsort()+ 1 ,  lists[87].argsort()[::-1].argsort()+ 1)
+
+
+written_score = np.vstack(( person_num, written_tickle_ranking, written_major_ranking,  lists[85:88], written_total_score ))
+written_score = written_score.T
+written_score = written_score.astype(int)
+
+
+with open('written_score.csv', 'a', newline='') as file:
+   writer = csv.writer(file)
+   writer.writerow(written_csv_intro)
+   writer.writerow(written_csv_total)
+   writer.writerow(written_csv_average)
+   for i in range(len(written_score)):
+     writer.writerow([name_list[i]] + [major_list[i]] + list(written_score[i]))
 
 
 
 
+# history_list = lists[84:99]
+
+# history_total_matrix = np.zeros_like(history_list)
+# history_total_matrix[0] = history_list[0]
+# for i in range(1, np.shape(history_list)[0]):
+#     history_total_matrix[i] = np.sum(history_list[:i+1], axis=0)
 
 
+# history_rank_matrix = np.zeros_like(history_list)
+# for i in range(0, np.shape(history_list)[0]):
+#     history_rank_matrix[i] = history_total_matrix[i].argsort()[::-1].argsort() + 1
 
 
-
-
-history_list = lists[84:99]
-
-history_total_matrix = np.zeros_like(history_list)
-history_total_matrix[0] = history_list[0]
-for i in range(1, np.shape(history_list)[0]):
-    history_total_matrix[i] = np.sum(history_list[:i+1], axis=0)
-
-
-history_rank_matrix = np.zeros_like(history_list)
-for i in range(0, np.shape(history_list)[0]):
-    history_rank_matrix[i] = history_total_matrix[i].argsort()[::-1].argsort() + 1
-
-
-semester_score = history_total_matrix[-1] + dan_total_score*5
-semester_rank = 100 - semester_score.argsort()[::-1].argsort() 
+# semester_score = history_total_matrix[-1] + dan_total_score*5
+# semester_rank = 100 - semester_score.argsort()[::-1].argsort() 
 
 
 
