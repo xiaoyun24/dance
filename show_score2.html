@@ -272,48 +272,66 @@
 
             var s = parseInt(row[8])+ parseInt(row[9]);
 
-      
+
+   
 
             document.getElementById('row2').innerHTML = `
-              <table>
-    <tr>
-        <th>Category</th>
-        <th>Score</th>
-    </tr>
-    <tr>
-        <td>个人挠痒</td>
-        <td>${row[11]}</td>
-    </tr>
-    <tr>
-        <td>对决挠痒</td>
-        <td>${row[13]}</td>
-    </tr>
-    <tr>
-        <td>挠痒笔试</td>
-        <td>${row[6]}</td>
-    </tr>
-    <tr>
-        <td>${wri}</td>
-        <td>${s}</td>
-    </tr>
-    <tr>
-        <td>${bal}</td>
-        <td>${row[15]}</td>
-    </tr>
-    <tr>
-        <td>${gym}</td>
-        <td>${row[17]}</td>
-    </tr>
-    <tr>
-        <td>期末考试总分</td>
-        <td>${row[4]}</td>
-    </tr>
-    <tr>
-        <td>期末考试排名</td>
-        <td>${row[5]}</td>
-    </tr>
-</table>
+              <div class="column">  
+                    <p class = "info">个人挠痒</p>
+                    <p class="score">${row[11]}</p>
+                </div>
+                <div class="column">
+                    <p class = "info">对决挠痒</p>
+                    <p class="score">${row[13]}</p>
+                      
+                </div>
+                <div class="column">
+                    <p class = "info">挠痒笔试</p>
+                    <p class="score">${row[6]}</p>
+                      
+                </div>
+                <div class="column">
+                    <p class = "info">${wri}</p>
+                    <p class="score">${s}</p>
+                      
+                </div>
 
+                <div class="column">
+                    <p class = "info">${bal}</p>
+                    <p class="score">${row[15]}</p>
+                      
+                </div>
+
+                <div class="column">
+                    <p class = "info">${gym}</p>
+                    <p class="score">${row[17]}</p>
+                      
+                </div>
+
+                <div class="column">
+                    <p class = "info">${wri}</p>
+                    <p class="score">${s}</p>
+                      
+                </div>
+                <div class="column">
+                    <p class = "info">${wri}</p>
+                    <p class="score">${s}</p>
+                      
+                </div>
+            
+            `;
+
+            document.getElementById('row3').innerHTML = `
+              <div class="column">  
+                <p class = "info">期末考试总分</p>
+                <p class="score">${row[4]}</p>
+                </div>
+                <div class="column">
+                    <p class = "info">期末考试排名</p>
+                    <p class="score">${row[5]}</p>
+                      
+                </div>
+               
             
             `;
 
