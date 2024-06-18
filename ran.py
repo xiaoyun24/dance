@@ -548,12 +548,12 @@ semester_rank = 100 - semester_score.argsort()[::-1].argsort()
 
 
 
-rank = np.vstack(( person_num,   history_rank_matrix ,  semester_rank))
+rank = np.vstack(( person_num, history_total_matrix, final_exam_final_score, semester_score,  history_rank_matrix ,  semester_rank))
 rank = rank.T
 rank = rank.astype(int)
 
 
-csv_ranking_intro = ["姓名", "学号", "专业"] + ["第"+str(i + 1)+"周排名" for i in range(15)] + [ "学期排名"]
+csv_ranking_intro = ["姓名",  "专业", "学号"] + ["第"+str(i + 1)+"总得分" for i in range(15)] + ["期末考试成绩", "学期成绩"] +  ["第"+str(i + 1)+"周排名" for i in range(15)] + [ "学期排名"]
 
 with open('ranking.csv', 'a', newline='') as file:
    writer = csv.writer(file)
