@@ -4,8 +4,8 @@ import random
 
 
 
-name_list = ['白宇轩', '卞博文', '曹天宇', '常俊杰', '程昊天', '程子涵', '陈思羽', '陈思源', '陈子涵', '崔宇轩', '戴宇翔', '戴宇轩', '邓思羽', '邓子轩', '丁浩天', '翟子涵', '董子睿', '冯子睿', '付子豪', '高俊凯', '高思羽', '郭浩宇', '郭子豪', '韩思源', '何昊然', '贺俊杰', '何天宇', '贺宇翔', '华俊凯', '黄子涵', '胡俊凯', '胡天睿', '蒋睿博', '江宇轩', '蒋子睿', '蒋子轩', '柯昊然', '柯杰尹', '孔维熙', '黎博文', '李浩然', '李俊杰', '李俊熙', '林子轩', '李瑞泽', '刘瑞杰', '刘宇轩', '龙俊杰', '罗宇航', '马子睿', '潘子涵', '彭子航', '钱子豪', '史俊豪', '宋文杰', '孙思远', '孙子涵', '谭博文', '唐子豪', '唐子轩', '王俊豪', '王宇轩', '王子睿', '韦俊豪', '文子睿', '吴昊天', '吴子睿', '萧俊豪', '夏扬', '谢俊杰', '谢子涵', '熊昊天', '许晨曦', '许晨曦', '薛宇航', '徐浩轩', '许睿杰', '徐思远', '许子睿', '杨博文', '杨晨轩', '杨宇轩', '袁俊杰', '袁宇翔', '张俊豪', '张文博', '张宇航', '赵嘉文', '赵云飞', '赵子涵', '赵子睿', '郑浩天', '郑子睿', '周俊豪', '周宇浩', '周宇翔', '周子轩', '朱博文', '朱浩宇', '朱俊熙']
-person_num = np.linspace(353, 452, 100, dtype=int)
+name_list = ['白宇轩', '卞博文', '曹天宇', '常俊杰', '程昊天', '程子涵', '陈思羽', '陈思源', '陈子涵', '崔宇轩', '戴宇翔', '戴宇轩', '邓思羽', '邓子轩', '丁浩天', '翟子涵', '董子睿', '冯子睿', '付子豪', '高俊凯', '高思羽', '郭浩宇', '郭子豪', '韩思源', '何昊然', '贺俊杰', '何天宇', '贺宇翔', '华俊凯', '黄子涵', '胡俊凯', '胡天睿', '蒋睿博', '江宇轩', '蒋子睿', '蒋子轩', '柯昊然', '柯杰尹', '孔维熙', '黎博文', '李浩然', '李俊杰', '李俊熙', '林子轩', '李瑞泽', '刘瑞杰', '刘宇轩', '龙俊杰', '罗宇航', '马子睿', '潘子涵', '彭子航', '钱子豪', '史俊豪', '宋文杰', '孙思远', '孙子涵', '谭博文', '唐子豪', '唐子轩', '王俊豪', '王宇轩', '王子睿', '韦俊豪', '文子睿', '吴昊天', '吴子睿', '萧俊豪', '夏扬', '谢俊杰', '谢子涵', '熊昊天', '许晨曦', '许晨曦', '薛宇航', '徐浩云', '许睿杰', '徐思远', '许子睿', '杨博文', '杨晨轩', '杨宇轩', '袁俊杰', '袁宇翔', '张俊豪', '张文博', '张宇航', '赵嘉文', '赵云飞', '赵子涵', '赵子睿', '郑浩天', '郑子睿', '周俊豪', '周宇浩', '周宇翔', '周子轩', '朱博文', '朱浩宇', '朱俊熙']
+person_num = np.linspace(353, 452, 100, dtype=int)  
 
 
 numbers = list(range(0, 100))
@@ -246,6 +246,13 @@ for l in lists[0:43]:
   dan_total_score += l
 
 
+for i in bal_index:
+   for j in random.sample(range(43, 50), 4):
+      lists[j][i] *= 0
+   for j in range(55,59):
+      lists[j][i] *= 0
+
+
 
 
 gym_exercise_score = np.zeros((1,100))
@@ -298,31 +305,34 @@ for l in lists[81:84]:
    tk_total_score += l 
 
 
-history_list = lists[84:99]
-
-history_total_matrix = np.zeros_like(history_list)
-history_total_matrix[0] = history_list[0]
-for i in range(1, np.shape(history_list)[0]):
-    history_total_matrix[i] = np.sum(history_list[:i+1], axis=0)
-
-
-history_rank_matrix = np.zeros_like(history_list)
-for i in range(0, np.shape(history_list)[0]):
-    history_rank_matrix[i] = history_total_matrix[i].argsort()[::-1].argsort() + 1
-
-
-semester_score = history_total_matrix[-1] + dan_total_score*5
-semester_rank = 100 - semester_score.argsort()[::-1].argsort() 
 
 
 
 dan_csv_intro = ["姓名","专业","学号","班号","排名","总分","基本功","主题曲","个人剧目","团队剧目","素质测评","舞步圆场","四拍舞步","地面练习提、沉、转腰","含、展、横移","踢、撩腿","大环动","压、扳腿","大踢腿（一）","扶把练习","蹲","小踢、弹腿","端、掖腿蹲","吸伸腿","大踢腿（二）","中间练习盘手","弯腰","平转","小跳（一）","小跳（二）","速度反应","蒙古族舞","唯吾尔族舞","傣族舞","技术动作","情感传达","肢体能量","乐感节奏","创新动作","舞台表现","舞蹈技巧","艺术表现","编排创意","舞台表现","音乐理解","服装","技术动作1","技术动作2","技术动作3","团队协作","情感传达","姿态体态","表现力","即兴编舞"]
-dan_csv_total = [0,0, 0,0, 150,50,20,30,30,20, 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,8,4,2,2,3,1,6,6,5,5,5,4,5,5,5,9,6,8,6,6]
-dan_csv_average = [0,0,0,0 ] + [sum(dan_jbg_means) + sum(dan_ztq_means) + sum(dan_gj_means) + sum(dan_tj_means) + sum(dan_sz_means)] +  [sum(dan_jbg_means)] + [sum(dan_ztq_means)]  + [sum(dan_gj_means)] + [sum(dan_tj_means)] + [sum(dan_sz_means)] +  dan_jbg_means + dan_ztq_means + dan_gj_means + dan_tj_means + dan_sz_means
+dan_csv_total = [0,0, 0,0,0, 150,50,20,30,30,20, 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,8,4,2,2,3,1,6,6,5,5,5,4,5,5,5,9,6,8,6,6]
+dan_csv_average = [0,0,0,0,0 ] + [sum(dan_jbg_means) + sum(dan_ztq_means) + sum(dan_gj_means) + sum(dan_tj_means) + sum(dan_sz_means)] +  [sum(dan_jbg_means)] + [sum(dan_ztq_means)]  + [sum(dan_gj_means)] + [sum(dan_tj_means)] + [sum(dan_sz_means)] +  dan_jbg_means + dan_ztq_means + dan_gj_means + dan_tj_means + dan_sz_means
 dan_csv_average = np.array(dan_csv_average, dtype  = np.float64)
 
 
-dan_ranking = 100 - dan_total_score.argsort()[::-1].argsort() 
+
+modified_dan_total_score = dan_total_score
+for i in range(len(dan_total_score[0])):
+   if i in gym_index:     
+      modified_dan_total_score[0][i] = dan_total_score[0][i] - 150
+   
+
+
+raw_ranking = 100 - modified_dan_total_score.argsort()[::-1].argsort() 
+
+dan_ranking = raw_ranking
+for i in range(len(dan_ranking[0])):
+   if i in gym_index:
+      dan_ranking[0][i] = raw_ranking[0][i] - 60
+
+modified_dan_total_score = dan_total_score
+for i in range(len(dan_total_score[0])):
+   if i in gym_index:     
+      modified_dan_total_score[0][i] = dan_total_score[0][i] + 150
 
 
 ballet_score = np.vstack(( person_num, bal_class_sequence, dan_ranking, dan_total_score, dan_jbg_score, dan_ztq_score, dan_gj_score ,dan_tj_score, dan_sz_score, lists[:43]))
@@ -338,6 +348,90 @@ with open('ballet_score.csv', 'a', newline='') as file:
    for i in range(len(ballet_score)):
      writer.writerow([name_list[i]] + [major_list[i]] + list(ballet_score[i]))
 
+
+
+
+gym_csv_intro = ["姓名","专业","学号","班号","排名",
+                 "总分",
+                 "竞技体操项目", "身体素质测试", "艺术体操", "力量测评", "平衡测试",
+                 "鞍马", "吊环", "跳马", "双杠", "单杠", "高低杠", "蹦床体操",
+                 "1000米", "50米", 
+                 "难度", "艺术性", "执行",
+                 "引体向上", "仰卧起坐", "俯卧撑", "墙上手倒立撑",
+                 "跳跃协调", "站立平衡", "平衡板", "跳跃协调"]
+gym_csv_total = [0,0, 0,0,0, 
+                 150,
+                 70,20,20,20,20,
+                 10,10,10,10,10,10,10,
+                 10,10,
+                 10,5,5,
+                 5,5,5,5,
+                 5,5,5,5]
+gym_csv_average = [0,0,0,0,0 ] + [sum(gym_exercise_means) + sum(gym_run_means) + sum(gym_art_means) + sum(gym_strength_means) + sum(gym_balance_means)] +  [sum(gym_exercise_means)] + [sum(gym_run_means)]  + [sum(gym_art_means)] + [sum(gym_strength_means)] + [sum(gym_balance_means)] +  gym_exercise_means + gym_run_means + gym_art_means + gym_strength_means + gym_balance_means
+gym_csv_average = np.array(gym_csv_average, dtype  = np.float64)
+
+
+
+modified_gym_total_score = gym_total_score
+for i in range(len(gym_total_score[0])):
+   if i in bal_index:     
+      modified_gym_total_score[0][i] = gym_total_score[0][i] - 150
+   
+
+
+raw_ranking = 100 - modified_gym_total_score.argsort()[::-1].argsort() 
+
+gym_ranking = raw_ranking
+for i in range(len(gym_ranking[0])):
+   if i in bal_index:
+      gym_ranking[0][i] = raw_ranking[0][i] - 40
+
+modified_gym_total_score = gym_total_score
+for i in range(len(gym_total_score[0])):
+   if i in bal_index:     
+      modified_gym_total_score[0][i] = gym_total_score[0][i] + 150
+
+
+gym_score = np.vstack(( person_num, gym_class_sequence, gym_ranking, gym_total_score, gym_exercise_score , gym_run_score , gym_art_score , gym_strength_score , gym_balance_score, lists[43:63]))
+gym_score = gym_score.T
+gym_score = gym_score.astype(int)
+
+
+with open('gym_score.csv', 'a', newline='') as file:
+   writer = csv.writer(file)
+   writer.writerow(gym_csv_intro)
+   writer.writerow(gym_csv_total)
+   writer.writerow(gym_csv_average)
+   for i in range(len(gym_score)):
+     writer.writerow([name_list[i]] + [major_list[i]] + list(gym_score[i]))
+
+
+
+
+
+
+
+
+
+
+
+
+
+history_list = lists[84:99]
+
+history_total_matrix = np.zeros_like(history_list)
+history_total_matrix[0] = history_list[0]
+for i in range(1, np.shape(history_list)[0]):
+    history_total_matrix[i] = np.sum(history_list[:i+1], axis=0)
+
+
+history_rank_matrix = np.zeros_like(history_list)
+for i in range(0, np.shape(history_list)[0]):
+    history_rank_matrix[i] = history_total_matrix[i].argsort()[::-1].argsort() + 1
+
+
+semester_score = history_total_matrix[-1] + dan_total_score*5
+semester_rank = 100 - semester_score.argsort()[::-1].argsort() 
 
 
 
