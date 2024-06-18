@@ -149,6 +149,7 @@
         }
 
         .score {
+            margin-top: 5px;
             font-size: 1.5em;
             color: #3949ab;
             text-align: center;
@@ -270,6 +271,8 @@
                 wri = "芭蕾笔试";
             }
 
+            v
+
             document.getElementById('row2').innerHTML = `
               <div class="column">
                     
@@ -289,7 +292,7 @@
 
 
                     <p class="score">${row[6]}</p>
-                    <p class="score">${0 + row[8] + row[9]}</p>
+                    <p class="score">${( row[8] + row[9])}</p>
 
                     <p class="score">${row[15]}</p>
                     <p class="score">${row[17]}</p>
