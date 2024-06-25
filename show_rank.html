@@ -129,8 +129,8 @@
             const names = [];
 
             for (var i = 0; i < 101; i++){
-                names[rows[i][24 + index]] = rows[i][0];
-                indicators[rows[i][24 + index]] = rows[i][1];
+                names[rows[i][24 + index]-1] = rows[i][0];
+                indicators[rows[i][24 + index]-1] = rows[i][1];
             }
 
             
@@ -139,6 +139,7 @@
 
         function createPyramid(names, indicators) {
             const pyramidDiv = document.getElementById('pyramid');
+            pyramidDiv.innerHTML = '';
             let index = 0;
             for (let i = 0; i < rows.length && index < names.length; i++) {
                 if (i === 4) {
