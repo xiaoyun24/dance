@@ -121,9 +121,9 @@
         async function fetchColumn(columnName) {
             const response = await fetch('ranking.csv');
             const data = await response.text();
-            const parsedData = parseCSV(data);
-            console.log(parsedData);
-            const rank = parsedData.map(row => row[24]);
+            const rows = text.split('\n').map(row => row.split(','));
+            console.log(rows);
+            
             //const indicators = parsedData.map(row => parseInt(row[1]));
             const indicators = [];
             const names = [];
@@ -162,19 +162,24 @@
             }
         }
 
-        function parseCSV(data) {
-            const lines = data.split('\n');
-            const headers = lines[0].split(',');
-            const rows = lines.slice(1).map(line => {
-                const values = line.split(',');
-                const row = {};
-                headers.forEach((header, index) => {
-                    row[header] = values[index];
-                });
-                return row;
-            });
-            return rows;
-        }
+        // async function fetchCSV() {
+        //     const response1 = await fetch('score.csv');
+        //     const data1 = await response1.text();
+        //     return data1;
+        // }
+
+        // async function fetchRankCSV() {
+        //     const response1 = await fetch('ranking.csv');
+        //     const data1 = await response1.text();
+        //     return data1;
+        // }
+
+        // function parseCSV(text) {
+        //     const rows = text.split('\n').map(row => row.split(','));
+        //     return rows;
+        // }
+
+        
     </script>
 </body>
 </html>
