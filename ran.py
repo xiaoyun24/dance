@@ -187,9 +187,9 @@ written_ranges = [(0,150)] + [(0,100)] * 2
 
 
 
-prev_means = [70]*7 + [200] +  [70]*7 + [200]
-prev_std_devs = [9 ]*7 + [13] +  [9 ]*7 + [13]
-prev_ranges = [(0,100)]*7 + [(0,300)] + [(0,100)]*7 + [(0,300)]
+prev_means = [70]*7 + [200] +  [70]*7 + [170]*4
+prev_std_devs = [9 ]*7 + [13] +  [9 ]*7 + [15]*4
+prev_ranges = [(0,100)]*7 + [(0,300)] + [(0,100)]*7 + [(0,300)]*4
 
 
 means = dan_jbg_means + dan_ztq_means + dan_gj_means + dan_tj_means + dan_sz_means \
@@ -538,7 +538,7 @@ with open('final_exam_score.csv', 'a', newline='') as file:
 
 
 
-history_list = lists[88:104]
+history_list = lists[88:103]
 
 history_total_matrix = np.zeros_like(history_list)
 history_total_matrix[0] = history_list[0]
@@ -555,13 +555,23 @@ semester_score = history_total_matrix[-1] + (dan_total_score + gym_total_score +
 semester_rank = 100 - semester_score.argsort()[::-1].argsort() 
 
 
+round_one_score = semester_score + lists[103]
+round_two_score = round_one_score + lists[104]
+round_three_score = round_two_score + lists[105]
+round_four_score = round_three_score + lists[106]
 
-rank = np.vstack(( person_num, history_total_matrix, final_exam_final_score, semester_score,  history_rank_matrix ,  semester_rank))
+round_one_rank = 100 - round_one_score.argsort()[::-1].argsort() 
+round_two_rank = 100 - round_two_score.argsort()[::-1].argsort() 
+round_three_rank = 100 - round_three_score.argsort()[::-1].argsort() 
+round_four_rank = 100 - round_four_score.argsort()[::-1].argsort() 
+
+
+rank = np.vstack(( person_num, history_total_matrix, final_exam_final_score, semester_score, round_one_score, round_two_score, round_three_score, round_four_score, history_rank_matrix ,  semester_rank, round_one_rank, round_two_rank,round_three_rank, round_four_rank))
 rank = rank.T
 rank = rank.astype(int)
 
 
-csv_ranking_intro = ["姓名",  "专业", "学号"] + ["第"+str(i + 1)+"总得分" for i in range(16)] + ["期末考试成绩", "学期成绩"] +  ["第"+str(i + 1)+"周排名" for i in range(16)] + [ "学期排名"]
+csv_ranking_intro = ["姓名",  "专业", "学号"] + ["第"+str(i + 1)+"周总得分" for i in range(15)] + ["期末考试成绩", "学期成绩"] + ["成团夜"+str(i + 1)+"轮总得分" for i in range(4)] +  ["第"+str(i + 1)+"周排名" for i in range(15)] + [ "学期排名"] + ["成团夜"+str(i + 1)+"轮总排名" for i in range(4)] 
 
 with open('ranking.csv', 'a', newline='') as file:
    writer = csv.writer(file)
