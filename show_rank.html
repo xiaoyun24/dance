@@ -122,12 +122,13 @@
             const response = await fetch('ranking.csv');
             const data = await response.text();
             const parsedData = parseCSV(data);
+            console.log(parsedData);
             const rank = parsedData.map(row => row[24]);
             //const indicators = parsedData.map(row => parseInt(row[1]));
             const indicators = [];
             const names = [];
 
-            console.log(rank);
+            
             createPyramid(names, indicators);
         }
 
