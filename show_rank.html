@@ -170,7 +170,7 @@
                 indicators[rows[i][24 + index]-1] = rows[i][1];
                 if (index > 0){
                     var val = rows[i][24 + index] - rows[i][24 + index - 1];
-                    if (val = 0){
+                    if (val === 0){
                         rankingChanges[rows[i][24 + index]-1] = '-';
                     }else if(val > 0){
                         rankingChanges[rows[i][24 + index]-1] = '↑' + val;
@@ -179,6 +179,8 @@
                         rankingChanges[rows[i][24 + index]-1] = '↓' + val;
                     }
                     
+                }else{
+                    rankingChanges[rows[i][24 + index]-1] = '-';
                 }
                 
             }
@@ -210,7 +212,7 @@
                     nameSpan.textContent = names[index];
                     nameSpan.setAttribute('data-index', index + 1); 
                     nameSpan.setAttribute('data-change', rankingChanges[index]);
-                    if (rankingChanges[index].startsWith('↑')) {
+                    if (rankingChanges[index][0]==='↑') {
                         nameSpan.classList.add('positive-change'); // Apply green color for positive change
                     } else {
                         nameSpan.classList.add('negative-change'); // Apply red color for negative change
