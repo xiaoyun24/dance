@@ -173,10 +173,10 @@
                     if (val === 0){
                         rankingChanges[rows[i][24 + index]-1] = '-';
                     }else if(val > 0){
-                        rankingChanges[rows[i][24 + index]-1] = '↑' + val;
+                        rankingChanges[rows[i][24 + index]-1] = '↓' + val;
                     }else{
                         val = 0 - val;
-                        rankingChanges[rows[i][24 + index]-1] = '↓' + val;
+                        rankingChanges[rows[i][24 + index]-1] = '↑' + val;
                     }
                     
                 }else{
@@ -212,10 +212,10 @@
                     nameSpan.textContent = names[index];
                     nameSpan.setAttribute('data-index', index + 1); 
                     nameSpan.setAttribute('data-change', rankingChanges[index]);
-                    if (rankingChanges[index][0]==='↑') {
-                        nameSpan.classList.add('positive-change'); // Apply green color for positive change
+                    if (rankingChanges[index][0]==='↓') {
+                        nameSpan.classList.add('negative-change'); // Apply green color for positive change
                     } else {
-                        nameSpan.classList.add('negative-change'); // Apply red color for negative change
+                        nameSpan.classList.add('positive-change'); // Apply red color for negative change
                     }
                     if (index < 11) {
                         nameSpan.classList.add('large'); // Apply larger font size and orange background to the first 11 names
