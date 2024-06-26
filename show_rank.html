@@ -81,6 +81,38 @@
             font-size: 12px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
+        .positive-change::before {
+            content: attr(data-change);
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            width: 20px;
+            height: 20px;
+            
+            color: #32CD32;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .negative-change::before {
+            content: attr(data-change);
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            width: 20px;
+            height: 20px;
+            
+            color: #FF6347;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
         .large {
             font-size: 24px; /* Larger font size for first 11 names */
             padding: 10px 14px;
@@ -104,6 +136,7 @@
     <div class="navbar">
         <button onclick="fetchColumn(0)">第一周排名</button>
         <button onclick="fetchColumn(1)">第二周排名</button>
+        <button onclick="fetchColumn(2)">第三周排名</button>
         
     </div>
     <div class="container">
@@ -131,15 +164,19 @@
             for (var i = 0; i < 101; i++){
                 names[rows[i][24 + index]-1] = rows[i][0];
                 indicators[rows[i][24 + index]-1] = rows[i][1];
+                if (index > 0){
+                    rankingChanges [rows[i][24 + index]-1] = rows[i][24 + index] - rows[i][24 + index - 1];
+                }
+                
             }
 
             heading = rows[0][24 + index];
 
             
-            createPyramid(heading, names, indicators);
+            createPyramid(heading, names, indicators, rankingChanges);
         }
 
-        function createPyramid(heading, names, indicators) {
+        function createPyramid(heading, names, indicators, rankingChanges) {
             const title = document.getElementById('heading');
             title.innerHTML = `<p>${heading}</p>`;
             const pyramidDiv = document.getElementById('pyramid');
@@ -156,7 +193,13 @@
                 for (let j = 0; j < rows[i] && index < names.length; j++) {
                     const nameSpan = document.createElement('span');
                     nameSpan.textContent = names[index];
-                    nameSpan.setAttribute('data-index', index + 1); // Set the index bubble
+                    nameSpan.setAttribute('data-index', index + 1); 
+                    nameSpan.setAttribute('data-change', rankingChanges[index]);
+                    if (rankingChanges[index].startsWith('-')) {
+                        nameSpan.classList.add('positive-change'); // Apply green color for positive change
+                    } else {
+                        nameSpan.classList.add('negative-change'); // Apply red color for negative change
+                    }
                     if (index < 11) {
                         nameSpan.classList.add('large'); // Apply larger font size and orange background to the first 11 names
                     }
